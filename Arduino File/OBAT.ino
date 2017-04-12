@@ -251,8 +251,8 @@ void setup() {
   pinMode(eventAudioStart,OUTPUT);
   digitalWrite(eventAudioStart,HIGH);
   
-  //if (list_i == 10) the program randonly choose a new value for j, selecting a new array of stimulus order
-  list_i=10;
+  //if (list_i > 10) the program randonly choose a new value for j, selecting a new array of stimulus order
+  list_i=11;
   list_j=0;  
   //Always initiate as 0 state
   state=0;   
@@ -340,6 +340,9 @@ void loop() {
         
         digitalWrite(eventStart, LOW);
         digitalWrite(eventStart, HIGH);
+        
+        //if (list_i > 10) the program randonly choose a new value for j, selecting a new array of stimulus order
+        list_i=11;
         
         trials=0;
       }
@@ -966,7 +969,7 @@ void loop() {
 
 int pseudoRand(){
   int res;
-  if (list_i>=10){
+  if (list_i>10){
       list_i=1;
       randomSeed(millis());
       list_j=random(10); // This number goes from 0-9, that will be multiplied by 10 and add with list_i
